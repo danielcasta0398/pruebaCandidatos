@@ -3,5 +3,6 @@ import { Candidate } from "../entities/Candidate";
 
 export interface ICandidateRepository {
   add?(candidate: Candidate): Promise<IResponseAddCandidateHTTP>;
-  delete?(id: string): Promise<void>;
+  getAllCandidates(): Promise<Candidate[]>;
+  updateCandidate(candidate: Candidate): Promise<IResponseAddCandidateHTTP>;
 }

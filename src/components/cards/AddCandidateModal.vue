@@ -50,9 +50,12 @@ import { ref, defineProps } from "vue";
 import { UseAddCandidate } from "../../application/useCases/useCandidate/UseAddCandidate";
 import { HttpCandidateRepository } from "../../infrastructure/repositories/HttpCandidateRepository";
 import { backFetch } from "../../config/adapters/backFetch.adapter";
+import { UseCaseUpdateCandidate } from "../../application/useCases/useCandidate/UseCaseUpdateCandidate";
+import { Candidate } from "../../domain/entities/Candidate";
 
 const candidateRepository = new HttpCandidateRepository(backFetch);
 const addCandidateUseCases = new UseAddCandidate(candidateRepository);
+const useCaseEditCandidate = new UseCaseUpdateCandidate(candidateRepository);
 
 const props = defineProps({
   onClose: Function, // Se llamará para cerrar el modal
@@ -90,5 +93,9 @@ const submitForm = async () => {
   } catch (error) {
     console.error("Error al añadir candidato:", error);
   }
+};
+
+const editCandidate = async (candidate: Candidate) => {
+  const response = await useCaseEditCandidate.execute(candidate);
 };
 </script>

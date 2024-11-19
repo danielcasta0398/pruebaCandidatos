@@ -1,5 +1,5 @@
 import { Candidate } from "../../../domain/entities/Candidate";
-import { ICandidateRepository } from "../../../domain/respositories/ICandidateRepository";
+import { ICandidateRepository } from "../../../domain/repositories/ICandidateRepository";
 import { IResponseAddCandidateHTTP } from "../../../infrastructure/interfaces/IResponseAddCandidateHTTP";
 
 export class UseAddCandidate {
